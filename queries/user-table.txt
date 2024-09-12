@@ -1,0 +1,21 @@
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    current_address TEXT,
+    permanent_address TEXT,
+    pincode VARCHAR(20),
+    city VARCHAR(100),
+    state VARCHAR(100),
+    contact_number VARCHAR(20),
+    email VARCHAR(100),
+    password VARCHAR(100),
+    emergency_first_name VARCHAR(100),
+    emergency_last_name VARCHAR(100),
+    aadhar_card_number VARCHAR(12),
+    driving_license_number VARCHAR(20),
+    pan_card_number VARCHAR(10),
+    branch VARCHAR(100),
+    user_role VARCHAR(50) NOT NULL DEFAULT 'user',
+    created_at TIMESTAMP
+);
