@@ -25,6 +25,7 @@ import (
 // @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
 func main() {
+	
 	connectionString := "host=172.17.0.1 user=postgres password=R£Q7D0iz0hz5 dbname=fleetloom_db port=5432 sslmode=disable TimeZone=Asia/Kolkata"
 	//connectionString := "host=localhost user=postgres password=rohan dbname=fleetloom_db port=5432 sslmode=disable TimeZone=Asia/Kolkata"
 	database.InitDB(connectionString)
