@@ -22,5 +22,6 @@ type User struct {
 	DrivingLicenseNumber string    `json:"driving_license_number"` // User's driving license number
 	PanCardNumber        string    `json:"pan_card_number"`        // User's PAN card number (Indian tax ID)
 	Branch               string    `json:"branch"`                 // The branch where the user is associated
+    UserRole             string    `json:"user_role"`              // Role of the user
 	CreatedAt            time.Time `json:"created_at"`             // Timestamp when the user was created
 }

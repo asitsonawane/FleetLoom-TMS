@@ -17,7 +17,7 @@
     "host": "localhost:8080",
     "basePath": "/",
     "paths": {
-        "/User": {
+        "/users": {
             "post": {
                 "description": "Create a new user with the input payload",
                 "consumes": [
@@ -51,7 +51,130 @@
                 }
             }
         },
-        "/User/{id}": {
+        "/users/email/{email}": {
+            "get": {
+                "description": "Retrieve details of a specific user by their Email",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get a user by Email",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User Email",
+                        "name": "email",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid email",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/name/{name}": {
+            "get": {
+                "description": "Retrieve details of a specific user by their First Name and Last Name",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get a user by First Name and Last Name",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User First Name and Last Name",
+                        "name": "name",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid user name",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/phone/{phone}": {
+            "get": {
+                "description": "Retrieve details of a specific user by their Phone Number",
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "summary": "Get a user by Phone Number",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "User Phone Number",
+                        "name": "phone",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.User"
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid phone number",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    "404": {
+                        "description": "User not found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
             "get": {
                 "description": "Retrieve details of a specific user by their ID",
                 "produces": [
@@ -257,6 +380,10 @@
                 },
                 "state": {
                     "description": "State where the user resides",
+                    "type": "string"
+                },
+                "user_role": {
+                    "description": "Role of the user",
                     "type": "string"
                 }
             }

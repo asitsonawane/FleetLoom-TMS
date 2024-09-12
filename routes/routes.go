@@ -22,4 +22,17 @@ func RegisterUserRoutes(router *mux.Router) {
 	// Mapping the DELETE request to the DeleteUser function.
 	// When a DELETE request is made to /users/{id}, it calls DeleteUser.
 	router.HandleFunc("/users/{id}", controllers.DeleteUser).Methods("DELETE")
+
+	// Mapping the GET request to the GetUserByEmail function.
+	// When a GET request is made to /users/email/{email}, it calls GetUserByEmail.
+	router.HandleFunc("/users/email/{email}", controllers.GetUserByEmail).Methods("GET")
+
+	// Mapping the GET request to the GetUserByPhone function.
+	// When a GET request is made to /users/phone/{phone}, it calls GetUserByPhone.
+	router.HandleFunc("/users/phone/{phone}", controllers.GetUserByPhone).Methods("GET")
+
+	// Mapping the GET request to the GetUserByName function.
+	// When a GET request is made to /users/name/{name}, it calls GetUserByName.
+	router.HandleFunc("/users/name/{name}", controllers.GetUserByName).Methods("GET")
+
 }

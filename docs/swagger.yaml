@@ -56,6 +56,9 @@ definitions:
       state:
         description: State where the user resides
         type: string
+      user_role:
+        description: Role of the user
+        type: string
     type: object
 host: localhost:8080
 info:
@@ -70,7 +73,7 @@ info:
   title: fleetloom API
   version: "1.0"
 paths:
-  /User:
+  /users:
     post:
       consumes:
       - application/json
@@ -92,7 +95,7 @@ paths:
       summary: Create a new user
       tags:
       - User
-  /User/{id}:
+  /users/{id}:
     delete:
       description: Remove a user from the system by their ID
       parameters:
@@ -177,6 +180,88 @@ paths:
           schema:
             type: string
       summary: Update a user by ID
+      tags:
+      - User
+  /users/email/{email}:
+    get:
+      description: Retrieve details of a specific user by their Email
+      parameters:
+      - description: User Email
+        in: path
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid email
+          schema:
+            type: string
+        "404":
+          description: User not found
+          schema:
+            type: string
+      summary: Get a user by Email
+      tags:
+      - User
+  /users/name/{name}:
+    get:
+      description: Retrieve details of a specific user by their First Name and Last
+        Name
+      parameters:
+      - description: User First Name and Last Name
+        in: path
+        name: name
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid user name
+          schema:
+            type: string
+        "404":
+          description: User not found
+          schema:
+            type: string
+      summary: Get a user by First Name and Last Name
+      tags:
+      - User
+  /users/phone/{phone}:
+    get:
+      description: Retrieve details of a specific user by their Phone Number
+      parameters:
+      - description: User Phone Number
+        in: path
+        name: phone
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+        "400":
+          description: Invalid phone number
+          schema:
+            type: string
+        "404":
+          description: User not found
+          schema:
+            type: string
+      summary: Get a user by Phone Number
       tags:
       - User
 swagger: "2.0"

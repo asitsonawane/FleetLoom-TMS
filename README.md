@@ -80,9 +80,11 @@ Install the required Go packages:
 
 ```bash
 go mod tidy
-go get -u github.com/swaggo/swag/cmd/swag
+#go get -u github.com/swaggo/swag/cmd/swag
+go install github.com/swaggo/swag/cmd/swag@latest
 go get -u github.com/swaggo/gin-swagger
 go get -u github.com/swaggo/gin-swagger/swaggerFiles
+
 ```
 
 ### Step 5: Generate Swagger Documentation
@@ -252,4 +254,30 @@ The Swagger UI allows you to test all the API endpoints, see the expected reques
 
 This project provides a simple yet powerful API for managing user data using Go and PostgreSQL. By following the setup instructions and understanding the code structure, you should be able to extend this project to fit your needs or integrate it with other systems.
 
-Feel free to explore and modify the code to gain a deeper understanding of Golang and API development.
+Personal changes -------
+
+I have pgadmin installed on my system. In it user ->postgres && password ->rohan
+
+Created a table with name users in database fleetloom_db
+```
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,  -- Unique identifier for the user (Primary Key)
+    first_name VARCHAR(255) NOT NULL,  -- User's first name
+    last_name VARCHAR(255) NOT NULL,  -- User's last name
+    current_address TEXT NOT NULL,  -- User's current address
+    permanent_address TEXT NOT NULL,  -- User's permanent address
+    pincode VARCHAR(10) NOT NULL,  -- Pincode for the user's address
+    city VARCHAR(100) NOT NULL,  -- City where the user resides
+    state VARCHAR(100) NOT NULL,  -- State where the user resides
+    contact_number VARCHAR(15) NOT NULL,  -- User's contact number
+    email VARCHAR(255) UNIQUE NOT NULL,  -- User's email address
+    password VARCHAR(255) NOT NULL,  -- User's password (should be hashed in a real application)
+    emergency_first_name VARCHAR(255) NOT NULL,  -- First name of the user's emergency contact
+    emergency_last_name VARCHAR(255) NOT NULL,  -- Last name of the user's emergency contact
+    aadhar_card_number VARCHAR(12) UNIQUE NOT NULL,  -- User's Aadhar card number (Indian ID)
+    driving_license_number VARCHAR(20) UNIQUE NOT NULL,  -- User's driving license number
+    pan_card_number VARCHAR(10) UNIQUE NOT NULL,  -- User's PAN card number (Indian tax ID)
+    branch VARCHAR(100) NOT NULL,  -- The branch where the user is associated
+    created_at TIMESTAMPTZ DEFAULT NOW()  -- Timestamp when the user was created
+);
+```
